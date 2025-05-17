@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page</title>
+
+    <script>
+        // Check if logged in
+        fetch('php/check_session.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.loggedin) {
+                    window.location.href = 'index.html';
+                }
+            });
+    </script>
 </head>
 <body>
     <h1>HI</h1>
