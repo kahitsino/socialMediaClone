@@ -14,7 +14,7 @@
                 <div class="card login-card shadow-sm">
                     <div class="card-body p-4">
                         <h5 class="card-title text-center mb-4">Login</h5>
-                        <form action="php/login.php" method="POST" onsubmit="return validateForm()">
+                        <form action="php/login.php" method="POST"">
                             <div class="mb-3">
                                 <input type="text" class="form-control form-control-lg" id="login" name="login" placeholder="Email or Username" required>
                             </div>
@@ -43,40 +43,7 @@
         </div>
     </footer>
 
-    <script>
-        function validateForm() {
-            const login = document.getElementById('login').value.trim();
-            const password = document.getElementById('password').value.trim();
-
-            if (!login || !password) {
-                alert('Please fill all fields!');
-                return false;
-            }
-
-        // Use fetch API for AJAX login
-            fetch('php/login.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `login=${encodeURIComponent(login)}&password=${encodeURIComponent(password)}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                window.location.href = data.redirect;
-                } else {
-                    alert(data.message || 'Login failed');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred during login');
-            });
-
-            return false; // Prevent default form submission
-    }
-    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 </html>

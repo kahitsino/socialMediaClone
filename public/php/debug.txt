@@ -1,0 +1,94 @@
+Login attempt: johson
+User not found
+Login attempt: johnson
+User found: Array
+(
+    [id] => 2
+    [username] => johnson
+    [email] => johnson@gmail.com
+    [password] => panget
+    [created_at] => 2025-05-18 14:58:19
+)
+
+Password verification failed
+Login attempt: johnson
+User found: Array
+(
+    [id] => 2
+    [username] => johnson
+    [email] => johnson@gmail.com
+    [password] => $2y$10$qzMKilVN3.fDfD.m8rgpPeW057RLeSu8NyLKM1wB9YzwoeQHaeBlC
+    [created_at] => 2025-05-18 14:58:19
+)
+
+Login successful for user ID: 2
+Login attempt: johsnon
+User not found
+Login attempt: johnson
+User found: Array
+(
+    [id] => 1
+    [username] => johnson
+    [email] => johnson@gmail.com
+    [password] => pangetako
+    [created_at] => 2025-05-18 15:10:49
+)
+
+Password verification failed
+Login attempt: jojhnson
+User not found
+Login attempt: johnson
+User found: Array
+(
+    [id] => 1
+    [username] => johnson
+    [email] => johnson@gmail.com
+    [password] => $2y$10$vzLMRCV9c3qm5I7MhRe6Yu0YppByBqVJk4Kg9/PzljHgBZhL547ty
+    [created_at] => 2025-05-18 15:10:49
+)
+
+Login successful for user ID: 1
+Login attempt: johnson
+User found: Array
+(
+    [id] => 1
+    [username] => johnson
+    [email] => johnson@gmail.com
+    [password] => $2y$10$6h883IlUggR.YsbF3mZ6VepbirFb.6rdl/Z81OsT5u5n6gW3BgB5
+    [created_at] => 2025-05-18 15:10:49
+)
+
+Password verification failed
+Login attempt: johnson
+User found: Array
+(
+    [id] => 1
+    [username] => johnson
+    [email] => johnson@gmail.com
+    [password] => $2y$10$6h883IlUggR.YsbF3mZ6VepbirFb.6rdl/Z81OsT5u5n6gW3BgB5
+    [created_at] => 2025-05-18 15:10:49
+)
+
+Password verification failed
+Login attempt: johnson
+User found: Array
+(
+    [id] => 1
+    [username] => johnson
+    [email] => johnson@gmail.com
+    [password] => $2y$10$gdopcPMD3Tbwvz2tSPosmesHQkJ1dnvoel2GM5MODErsjcTJcYir2
+    [created_at] => 2025-05-18 15:10:49
+)
+
+Password verification failed
+Login attempt: johnson
+User found: Array
+(
+    [id] => 1
+    [username] => johnson
+    [email] => johnson@gmail.com
+    [password] => $2y$10$KI63IKAuxXbB2q0zgDzwM.Ci0qxeERXU8I24HifYJ9lDz6giOL12K
+    [created_at] => 2025-05-18 15:10:49
+)
+
+Login successful for user ID: 1
