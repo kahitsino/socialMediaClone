@@ -42,8 +42,6 @@ try {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
-            $SESSION['password'] = $user['password'];
-            
             // Debug - successful login
             file_put_contents('debug.txt', "Login successful for user ID: ".$user['id']."\n", FILE_APPEND);
             
