@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-// I-enable ang lahat ng error reporting
+// Enable all error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Simulan ang debug log
+// Debug log
 $debug_log = "=== Login Attempt ===\n";
 $debug_log .= "Time: " . date('Y-m-d H:i:s') . "\n";
 
@@ -19,14 +19,14 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $db_username, $db_password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Kunin ang form data
+    // Get form data
     $login = trim($_POST['login']);
     $password = trim($_POST['password']);
     
     $debug_log .= "Login Input: $login\n";
     $debug_log .= "Password Input: [hidden]\n";
 
-    // Check kung email o username
+    // Check if email or username
     $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
     $debug_log .= "Using field: $field\n";
     
@@ -39,46 +39,42 @@ try {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         $debug_log .= "User Found: " . print_r($user, true) . "\n";
         
-        // I-verify ang password
+        // Verify password
         if (password_verify($password, $user['password'])) {
-            // Itakda ang session variables
+            // Set session variables
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
             
-            // I-verify kung naitakda ang session
             $debug_log .= "Session Variables Set:\n";
             $debug_log .= "user_id: " . $_SESSION['user_id'] . "\n";
             $debug_log .= "username: " . $_SESSION['username'] . "\n";
             $debug_log .= "email: " . $_SESSION['email'] . "\n";
             
-            // I-save ang debug log
-            file_put_contents('debug.txt', $debug_log, FILE_APPEND);
+            file_put_contents('../../debug.txt', $debug_log, FILE_APPEND);
             
-            // Magdagdag ng JavaScript redirect bilang fallback
-            echo '<script>window.location.href = "../home.html";</script>';
-            // PHP redirect
-            header('Location: ../home.html');
+            // Return success response
+            echo json_encode(['success' => true]);
             exit();
         } else {
             $debug_log .= "Login FAILED: Invalid password\n";
             file_put_contents('debug.txt', $debug_log, FILE_APPEND);
             
-            echo '<script>alert("Invalid password"); window.location.href = "../index.html";</script>';
+            echo json_encode(['success' => false, 'error' => 'password']);
             exit();
         }
     } else {
         $debug_log .= "Login FAILED: User not found\n";
         file_put_contents('debug.txt', $debug_log, FILE_APPEND);
         
-        echo '<script>alert("User not found"); window.location.href = "../index.html";</script>';
+        echo json_encode(['success' => false, 'error' => 'user']);
         exit();
     }
 } catch(PDOException $e) {
     $debug_log .= "Database ERROR: " . $e->getMessage() . "\n";
     file_put_contents('debug.txt', $debug_log, FILE_APPEND);
     
-    echo '<script>alert("Database error"); window.location.href = "../index.html";</script>';
+    echo json_encode(['success' => false, 'error' => 'database']);
     exit();
 }
 ?>
